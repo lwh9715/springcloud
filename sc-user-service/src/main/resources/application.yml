@@ -1,0 +1,18 @@
+server:
+  port: 8001
+spring:
+  application:
+    ##eureka的服务名称
+    name: user-server
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: SH #集群名称，这里SZ指的是深圳
+        namespace: be8d1b1c-e4a0-47ec-8115-d5f024421c4b #环境隔离：命名环境空间
+        ephemeral: false #false为非临时实例
+#eureka:
+#  client:
+#    #eureka的地址信息
+#    service-url:
+#      defaultZone: http://127.0.0.1:3189/eureka/
