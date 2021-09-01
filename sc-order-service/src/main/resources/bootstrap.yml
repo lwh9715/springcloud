@@ -1,0 +1,26 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: order-server # 服务名称
+  profiles:
+    active: dev #开发环境，这里是dev
+  cloud:
+    nacos:
+      server-addr: 192.168.43.7:8848 # Nacos地址 192.168.43.7:80 集群
+      discovery:
+        cluster-name: SZ #集群名称
+        namespace: 90c67854-e8e3-4058-aec6-71e6899822db #环境隔离：命名环境空间
+        ephemeral: false #false为非临时实例
+      config:
+        file-extension: yaml # 文件后缀名
+
+user-server: #负载均衡策略 1）配置文件方式，在order-service的application.yml文件中，添加新的配置可以修改规则
+  ribbon:
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡规则 随机
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule #负载均衡规则 轮询集群（就近选择同区域的集群服务）
+
+ribbon: #Ribbon负载均衡
+  eager-load:
+    enabled: true #开启饥饿加载
+    clients: user-server #指定对user-server这个服务饥饿架加载

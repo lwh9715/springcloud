@@ -1,0 +1,16 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: user-server # 服务名称
+  profiles:
+    active: dev #这里是开发环境dev, dev,prod,test
+  cloud:
+    nacos:
+      server-addr: 192.168.43.7:8848 # Nacos地址 192.168.43.7:80 集群
+      discovery:
+        cluster-name: SZ #集群名称，这里SZ指的是深圳
+        namespace: 90c67854-e8e3-4058-aec6-71e6899822db #环境隔离：命名环境空间
+        ephemeral: false #false为非临时实例
+      config:
+        file-extension: yaml # 文件后缀名

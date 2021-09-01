@@ -2,10 +2,14 @@ package com.order.controller;
 
 import com.order.entity.OrderDTO;
 import com.order.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author relax
@@ -17,14 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-    @Autowired
+    @Resource
     private OrderService orderService;
 
+    @Value("${pattern.dateformat}")
+    private String dateformat;
+
     @GetMapping("order/{id}")
-    public OrderDTO get(@PathVariable("id") Integer id){
+    public OrderDTO get(@PathVariable("id") Integer id) {
         return orderService.get(id);
     }
 
+    @GetMapping("now")
+    public String now() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
+    }
 
 
 }

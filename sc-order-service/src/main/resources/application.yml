@@ -1,25 +1,25 @@
-server:
-  port: 7001
-spring:
-  application:
-    name: order-server
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-      discovery:
-        cluster-name: SZ #集群名称
-        namespace: be8d1b1c-e4a0-47ec-8115-d5f024421c4b #环境隔离：命名环境空间
-        ephemeral: false #false为非临时实例
+#server:
+#  port: 7001
+#spring:
+#  application:
+#    name: orderserver
+#  cloud:
+#    nacos:
+#      server-addr: localhost:8848
+#      discovery:
+#        cluster-name: SZ #集群名称
+#        namespace: be8d1b1c-e4a0-47ec-8115-d5f024421c4b #环境隔离：命名环境空间
+#        ephemeral: false #false为非临时实例
 #eureka:
 #  client:
 #    service-url:
 #      defaultZone: http://127.0.0.1:3189/eureka/
-#负载均衡策略 1）配置文件方式，在order-service的application.yml文件中，添加新的配置可以修改规则
-user-server:
-  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡规则 随机
-    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule #负载均衡规则 轮询集群（就近选择同区域的集群服务）
-ribbon:
-  eager-load:
-    enabled: true #开启饥饿加载
-    clients: user-server #指定对user-server这个服务饥饿架加载
+
+#user-server: #负载均衡策略 1）配置文件方式，在order-service的application.yml文件中，添加新的配置可以修改规则
+#  ribbon:
+#    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡规则 随机
+#    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule #负载均衡规则 轮询集群（就近选择同区域的集群服务）
+#ribbon:
+#  eager-load:
+#    enabled: true #开启饥饿加载
+#    clients: user-server #指定对user-server这个服务饥饿架加载
