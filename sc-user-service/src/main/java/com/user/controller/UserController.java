@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -29,13 +30,15 @@ public class UserController {
     private String dateformat;
 
     @GetMapping("user/{id}")
-    public UserDO get(@PathVariable("id") Integer id) {
-        log.info("**{UserDO}**", id);
+    public UserDO get(@PathVariable("id") Integer id,
+                      @RequestHeader(value = "Truth", required = false) String truth) {
+        log.info("**{UserDO + RequestHeader}**", id ,truth);
+        System.out.println(truth);
         return userService.get(id);
     }
 
     @GetMapping("now")
-    public String now(){
+    public String now() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
     }
 

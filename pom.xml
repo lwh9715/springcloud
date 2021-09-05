@@ -11,6 +11,7 @@
     <modules>
         <module>sc-eureka-service</module>
         <module>sc-user-service</module>
+        <module>sc-gateway-service</module>
     </modules>
 
     <packaging>pom</packaging>

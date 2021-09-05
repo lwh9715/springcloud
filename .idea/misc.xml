@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/sc-eureka-service/pom.xml" />
         <option value="$PROJECT_DIR$/sc-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/sc-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/sc-gateway-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
