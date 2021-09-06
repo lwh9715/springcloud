@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>sc-eureka-service</module>
+        <module>sc-order-service</module>
         <module>sc-user-service</module>
         <module>sc-gateway-service</module>
     </modules>
